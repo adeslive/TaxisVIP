@@ -23,11 +23,19 @@
           
             <div class="collapse navbar-collapse" id="navbarColor01">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Principal <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{route('choferes')}}">Choferes</a>
+                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <button type="button" class="btn btn-primary">Choferes</button>
+                    <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+                        <a class="dropdown-item" href="{{route('choferes')}}">Lista choferes</a>
+                        <a class="dropdown-item" href="{{route('activos')}}">Activos</a>
+                        <a class="dropdown-item" href="{{route('inactivos')}}">Inactivos</a>
+                        <a class="dropdown-item" href="{{route('encarrera')}}">En carrera</a>
+                      </div>
+                    </div>
+                  </div>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{route('crearChofer')}}">Agregar Empleados</a>
