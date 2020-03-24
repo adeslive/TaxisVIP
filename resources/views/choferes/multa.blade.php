@@ -8,16 +8,19 @@
             <div class="card border-secundary mb-6" style="max-width: 30rem;">
                 <div class="card-header text-danger" style="text-align:center;">Multa</div>
                     <div class="card-body">
-                        <form>
+                        <form action="{{route('crearMulta', $idChofer)}}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label for="descripcion">Descripcion:</label>
-                                <textarea class="form-control" id="descripcion" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                              <label for="penalizacion">Penalizacion:</label>
-                              <input type="text" class="form-control" id="penalizacion" placeholder="">
+                                <textarea class="form-control" id="descripcion" name="infractions" rows="3"></textarea>
+                                <small class="form-text text-muted">@error('infractions') {{$message}} @enderror</small>
                             </div>
                             
+                            <div class="form-group">
+                              <label for="penalizacion">Penalizacion:</label>
+                              <input type="number" class="form-control" id="penalizacion" name="price" placeholder="">
+                              <small class="form-text text-muted">@error('price') {{$message}} @enderror</small>
+                            </div>
                             
                             <br>
                             <hr>

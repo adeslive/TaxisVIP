@@ -15,11 +15,11 @@ class CreateDriversTable extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('license', 45);
+            $table->string('license', 45)->unique()->nullable();
             $table->boolean('status');
-            $table->boolean('careerstatus');
-            $table->decimal('mileage');
-            $table->unsignedBigInteger('zones_id');
+            $table->boolean('careerstatus')->nullable();
+            $table->decimal('mileage')->nullable();
+            $table->unsignedBigInteger('zones_id')->nullable();
             $table->foreign('zones_id')->references('id')->on('zones');
             $table->unsignedBigInteger('persons_id');
             $table->foreign('persons_id')->references('id')->on('persons');

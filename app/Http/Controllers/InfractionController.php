@@ -14,7 +14,7 @@ class InfractionController extends Controller
      */
     public function index()
     {
-        //
+        return view('choferes.multa');
     }
 
     /**
@@ -22,9 +22,14 @@ class InfractionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        validator(['id' => $id],
+        [
+            'id' => 'exists:drivers,id'
+        ])->validate();
+        
+        return view('choferes.multa', ['idChofer' => $id]);
     }
 
     /**
@@ -33,9 +38,24 @@ class InfractionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        validator(['id' => $id],
+        [
+            'id' => 'exists:drivers,id'
+        ])->validate();
+
+        $datos = $request->except('_token');
+        $datos = $request->validate([
+            'infractions' => 'required|string',
+            'price' => 'required|numeric'
+        ]);
+
+        $datos['drivers_id'] = $id;
+
+        Infraction::insert($datos);
+
+        return redirect()->back();
     }
 
     /**

@@ -27,10 +27,10 @@
                   <a class="nav-link" href="#">Principal <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Choferes</a>
+                  <a class="nav-link" href="{{route('choferes')}}">Choferes</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Agregar Empleados</a>
+                  <a class="nav-link" href="{{route('crearChofer')}}">Agregar Empleados</a>
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
@@ -45,10 +45,7 @@
     <div class="container">
       @yield('info')
     </div>
-    <!--<div class="container">
-    <a href="{{ route('foto') }}" class="btn btn-primary">Fotos</a>
-    <a href="{{ route('noticia') }}" class="btn btn-primary">Blog</a>
-    <a href="{{ route('nosotros') }}" class="btn btn-primary">Nosotros</a>
+    
     </div>-->
     <div class="container">
         @yield('seccion')

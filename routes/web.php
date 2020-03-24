@@ -21,31 +21,22 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('activos', function () {
+Route::get('/activos', function () {
     return view('activos');
 })->name('activos');
 
-Route::get('encarrera', function () {
-    return view('encarrera');
-})->name('encarrera');
 
-Route::get('inactivos', function () {
-    return view('inactivos');
-})->name('inactivos');
+Route::get('/choferes', 'DriverController@index')->name('choferes');
+Route::post('/choferes', 'DriverController@store');
 
-Route::get('choferes', function () {
-    return view('choferes');
-})->name('choferes');
+Route::get('/choferes/activos', function(){ return view('choferes.activos'); });
 
-Route::get('agregarChofer', function () {
-    return view('agregarChofer');
-})->name('agregarChofer');
+Route::get('/choferes/nuevo', 'DriverController@create')->name('crearChofer');
 
-Route::get('agregarAuto', function () {
-    return view('agregarAuto');
-})->name('agregarAuto');
+Route::get('/choferes/modificar/{chofer}', 'InfractionController@create')->name('multa');
+Route::put('/choferes/{chofer}', 'InfractionController@create')->name('multa');
 
-Route::get('multa', function () {
-    return view('multa');
-})->name('multa');
+Route::get('/choferes/multa/{chofer}', 'InfractionController@create')->name('multa');
+Route::post('/choferes/multa/{chofer}', 'InfractionController@store')->name('crearMulta');
+
 
