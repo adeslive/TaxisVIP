@@ -12,9 +12,11 @@ class InfractionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idchofer)
     {
-        return view('choferes.multa');
+        $multas = Infraction::where('drivers_id', $idchofer)->orderBy('created_at', 'desc')->get();
+        
+        return view('choferes.listaMultas', ['multas' => $multas]);
     }
 
     /**
@@ -24,10 +26,7 @@ class InfractionController extends Controller
      */
     public function create($id)
     {
-        validator(['id' => $id],
-        [
-            'id' => 'exists:drivers'
-        ])->validate();
+        \App\Driver::findOrFail($id);
         
         return view('choferes.multa', ['idChofer' => $id]);
     }
@@ -40,10 +39,7 @@ class InfractionController extends Controller
      */
     public function store(Request $request, $id)
     {
-        validator(['id' => $id],
-        [
-            'id' => 'exists:drivers,id'
-        ])->validate();
+        \App\Driver::findOrFail($id);
 
         $datos = $request->except('_token');
         $datos = $request->validate([
@@ -52,7 +48,9 @@ class InfractionController extends Controller
         ]);
 
         $datos['drivers_id'] = $id;
-        Infraction::insert($datos);
+        $multa = new Infraction($datos);
+        $multa->save();
+
         return redirect()->back();
     }
 

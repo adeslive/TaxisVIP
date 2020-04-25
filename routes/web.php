@@ -39,6 +39,7 @@ Route::post('/choferes', 'DriverController@store')->name('crearChoferAccion');
 Route::get('/choferes/modificar/{chofer}', 'DriverController@edit')->name('modificarChofer');
 Route::put('/choferes/modificar/{chofer}', 'DriverController@update')->name('modificarChoferAccion');
 
+Route::get('/choferes/multas/{chofer}', 'InfractionController@index')->name('multas');
 Route::get('/choferes/multa/{chofer}', 'InfractionController@create')->name('crearMulta');
 Route::post('/choferes/multa/{chofer}', 'InfractionController@store')->name('crearMultaAccion');
 
