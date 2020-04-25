@@ -26,7 +26,7 @@ class InfractionController extends Controller
     {
         validator(['id' => $id],
         [
-            'id' => 'exists:drivers,id'
+            'id' => 'exists:drivers'
         ])->validate();
         
         return view('choferes.multa', ['idChofer' => $id]);
@@ -52,9 +52,7 @@ class InfractionController extends Controller
         ]);
 
         $datos['drivers_id'] = $id;
-
         Infraction::insert($datos);
-
         return redirect()->back();
     }
 

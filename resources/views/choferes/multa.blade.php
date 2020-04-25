@@ -8,7 +8,7 @@
             <div class="card border-secundary mb-6" style="max-width: 30rem;">
                 <div class="card-header text-danger" style="text-align:center;">Multa</div>
                     <div class="card-body">
-                        <form action="{{route('crearMulta', $idChofer)}}" method="POST">
+                        <form action="{{route('crearMultaAccion', $idChofer)}}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="descripcion">Descripcion:</label>

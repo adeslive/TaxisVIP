@@ -36,7 +36,7 @@
                   <option selected=""># de Placa</option>
                   @foreach($autos as $auto)
                   @if ($auto->drivers_id == $chofer->id)
-                  <option value="{{$auto->id}}">{{$auto->vehiclelicense}}</option>
+                  <option value="{{$auto->id}}" @if($auto->designated == 1) selected @endif>{{$auto->vehiclelicense}}</option>
                   @endif
                   @endforeach
                 </select>
@@ -44,17 +44,15 @@
             </fieldset>
             
         </td>
-        <td class="align-middle"><button type="button" class="btn btn-outline-success">Agregar Auto</button></td>
-        <td class="align-middle"><button type="button" class="btn btn-primary">Modificar</button></td>
-        <td class="align-middle"><a type="button" class="btn btn-danger" href="{{route('multa',$chofer->id)}}"> Queja </a></td>
+        <td class="align-middle"><a type="button" class="btn btn-outline-success" href="{{route('agregarAuto', $chofer->idchofer)}}">Agregar Auto</a></td>
+        <td class="align-middle"><a type="button" class="btn btn-primary" href="{{route('modificarChofer', $chofer->idchofer)}}">Modificar</a></td>
+        <td class="align-middle"><a type="button" class="btn btn-danger" href="{{route('crearMulta',$chofer->idchofer)}}"> Queja </a></td>
       </tr>
       @endforeach
     </tbody>
   </table>
 </div>
-<div class="col-md-12 text-center">
-    <ul class="pagination pagination-lg pager" id="myPager"></ul>
-</div>
+{{ $choferes->links() }}
 
 
 

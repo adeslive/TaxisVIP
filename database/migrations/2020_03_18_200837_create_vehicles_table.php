@@ -21,6 +21,7 @@ class CreateVehiclesTable extends Migration
             $table->string('vehiclelicense', 45);
             $table->string('brand', 45);
             $table->string('model', 45);
+            $table->boolean('designated')->default(0);
             $table->unsignedBigInteger('drivers_id');
             $table->foreign('drivers_id')->references('id')->on('drivers');
             $table->timestamps();

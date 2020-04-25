@@ -54,7 +54,7 @@
       @yield('info')
     </div>
     
-    </div>-->
+    </div>
     <div class="container">
         @yield('seccion')
     </div>

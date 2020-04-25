@@ -16,9 +16,9 @@ class CreateDriversTable extends Migration
         Schema::create('drivers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('license', 45)->unique()->nullable();
-            $table->boolean('status');
-            $table->boolean('careerstatus')->nullable();
-            $table->decimal('mileage')->nullable();
+            $table->boolean('status')->default('0');
+            $table->boolean('careerstatus')->nullable()->default('0');
+            $table->decimal('mileage')->nullable()->default('0');
             $table->unsignedBigInteger('zones_id')->nullable();
             $table->foreign('zones_id')->references('id')->on('zones');
             $table->unsignedBigInteger('persons_id');

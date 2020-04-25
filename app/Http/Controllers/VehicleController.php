@@ -22,9 +22,9 @@ class VehicleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idchofer)
     {
-        //
+        return view('autos.agregarAuto', ['idchofer' => $idchofer]);
     }
 
     /**
@@ -35,7 +35,17 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = $request->validate([
+            'vehiclelicense' => 'required|size:7|unique:vehicles',
+            'vin' => 'required|unique:vehicles',
+        ]);
+
+        $count = Vehicle::where('drivers_id', $request->drivers_id)->count();
+        $vehicle = new Vehicle($request->except('_token'));
+        if ($count == 0) $vehicle->designated = 1;
+        $vehicle->save();
+        
+        return redirect()->back();
     }
 
     /**
