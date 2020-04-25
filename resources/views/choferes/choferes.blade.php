@@ -12,6 +12,7 @@
         <th scope="col"></th>
         <th scope="col"></th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody id="myTable">
@@ -46,7 +47,8 @@
         </td>
         <td class="align-middle"><a type="button" class="btn btn-outline-success" href="{{route('agregarAuto', $chofer->idchofer)}}">Agregar Auto</a></td>
         <td class="align-middle"><a type="button" class="btn btn-primary" href="{{route('modificarChofer', $chofer->idchofer)}}">Modificar</a></td>
-        <td class="align-middle"><a type="button" class="btn btn-danger" href="{{route('crearMulta',$chofer->idchofer)}}"> Queja </a></td>
+        <td class="align-middle"><a type="button" class="btn btn-danger" href="{{route('crearMulta',$chofer->idchofer)}}"> Multa </a></td>
+        <td class="align-middle"><a type="button" class="btn btn-outline-danger"> Lista multas </a></td>
       </tr>
       @endforeach
     </tbody>
