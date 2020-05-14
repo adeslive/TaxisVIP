@@ -43,4 +43,9 @@ Route::get('/choferes/multas/{chofer}', 'InfractionController@index')->name('mul
 Route::get('/choferes/multa/{chofer}', 'InfractionController@create')->name('crearMulta');
 Route::post('/choferes/multa/{chofer}', 'InfractionController@store')->name('crearMultaAccion');
 
-
+/*********************************MOVIL ROUTES************************************/
+Route::get('/bienvenido','DriverMovilController@index')->name('choferesMovil');
+Route::get('/bienvenido/nuevaCarrera/{driver_id}','DriverMovilController@newCarreer')->name('nuevaCarrera');
+Route::get('/bienvenido/finalizarCarrera/{order_id}','DriverMovilController@finishCarreer')->name('finalizarCarrera');
+Route::get('/bienvenido/verificarCarrera/{driver_id}','DriverMovilController@verifyCarreer')->name('verificarCarrera');
+/*********************************************************************************/
