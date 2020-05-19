@@ -43,6 +43,10 @@ Route::get('/choferes/multas/{chofer}', 'InfractionController@index')->name('mul
 Route::get('/choferes/multa/{chofer}', 'InfractionController@create')->name('crearMulta');
 Route::post('/choferes/multa/{chofer}', 'InfractionController@store')->name('crearMultaAccion');
 
+Route::get('carrera', function () {
+    return view('carrera');
+})->name('carrera');
+
 /*********************************MOVIL ROUTES************************************/
 Route::get('/bienvenido','DriverMovilController@index')->name('choferesMovil');
 Route::get('/bienvenido/nuevaCarrera/{driver_id}','DriverMovilController@newCarreer')->name('nuevaCarrera');
