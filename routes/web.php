@@ -20,30 +20,41 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/choferes', 'DriverController@index')->name('choferes');
-Route::get('/choferes/activos', 'DriverController@activos')->name('activos');
-Route::get('/choferes/inactivos', 'DriverController@inactivos')->name('inactivos');
-Route::get('/choferes/encarrera', 'DriverController@encarrera')->name('encarrera');
 
-Route::get('/choferes/{chofer}/activar', 'DriverController@activar')->name('activar');
-Route::get('/choferes/{chofer}/inactivar', 'DriverController@inactivar')->name('inactivar');
+Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|secretaria']], function () {
 
-Route::get('/choferes/{chofer}/auto', 'VehicleController@create')->name('agregarAuto');
-Route::post('/auto/agregar/{chofer}', 'VehicleController@store')->name('agregarAutoAccion');
+    // Choferes, activos, inactivos y en carrera
+    Route::get('/choferes', 'DriverController@index')->name('choferes');
+    Route::get('/choferes/activos', 'DriverController@activos')->name('activos');
+    Route::get('/choferes/inactivos', 'DriverController@inactivos')->name('inactivos');
+    Route::get('/choferes/encarrera', 'DriverController@encarrera')->name('encarrera');
 
-Route::get('/choferes/nuevo', 'DriverController@create')->name('crearChofer');
-Route::post('/choferes', 'DriverController@store')->name('crearChoferAccion');
+    // Activacion de chofer
+    Route::get('/choferes/{chofer}/activar', 'DriverController@activar')->name('activar');
+    Route::get('/choferes/{chofer}/inactivar', 'DriverController@inactivar')->name('inactivar');
 
-Route::get('/choferes/modificar/{chofer}', 'DriverController@edit')->name('modificarChofer');
-Route::put('/choferes/modificar/{chofer}', 'DriverController@update')->name('modificarChoferAccion');
+    // Metodos para agregar autos
+    Route::get('/choferes/{chofer}/auto', 'VehicleController@create')->name('agregarAuto');
+    Route::post('/auto/agregar/{chofer}', 'VehicleController@store')->name('agregarAutoAccion');
 
-Route::get('/choferes/multas/{chofer}', 'InfractionController@index')->name('multas');
-Route::get('/choferes/multa/{chofer}', 'InfractionController@create')->name('crearMulta');
-Route::post('/choferes/multa/{chofer}', 'InfractionController@store')->name('crearMultaAccion');
+    // Metodos para crear chofer
+    Route::get('/choferes/nuevo', 'DriverController@create')->name('crearChofer');
+    Route::post('/choferes', 'DriverController@store')->name('crearChoferAccion');
 
-Route::get('/carrera', function () {
-    return view('carrera');
-})->name('carrera');
+    // Modificacion del chofer
+    Route::get('/choferes/modificar/{chofer}', 'DriverController@edit')->name('modificarChofer');
+    Route::put('/choferes/modificar/{chofer}', 'DriverController@update')->name('modificarChoferAccion');
+
+    // Metodos para crear multas
+    Route::get('/choferes/multas/{chofer}', 'InfractionController@index')->name('multas');
+    Route::get('/choferes/multa/{chofer}', 'InfractionController@create')->name('crearMulta');
+    Route::post('/choferes/multa/{chofer}', 'InfractionController@store')->name('crearMultaAccion');
+
+    // Metodos para la carrera
+    Route::get('/carrera', 'OrderController@create')->name('carrera');
+});
+
+
 
 /*********************************MOVIL ROUTES************************************/
 Route::get('/bienvenido','DriverMovilController@index')->name('choferesMovil');

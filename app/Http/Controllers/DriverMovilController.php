@@ -15,7 +15,7 @@ class DriverMovilController extends Controller
             $Driver = Driver::findOrFail(2);
             $person_id = $Driver->persons_id;
             $Person = Person::findOrFail($person_id);
-        return view('choferesMovil.choferesMovil',['Driver' => $Driver],['Person' => $Person]);
+        return view('choferesMovil.choferesMovil',['Driver' => $Driver, 'Person' => $Person]);
     }
 
     public function newCarreer($driver_id){

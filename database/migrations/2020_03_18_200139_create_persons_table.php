@@ -18,8 +18,8 @@ class CreatePersonsTable extends Migration
             $table->string('name', 45);
             $table->string('lastname', 45);
             $table->string('identity', 45)->unique();
-            $table->string('phone', 45);
-            $table->string('mail', 45);
+            $table->string('phone', 45)->unique();
+            $table->string('mail', 45)->unique();
             $table->timestamps();
         });
     }

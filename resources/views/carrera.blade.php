@@ -16,7 +16,7 @@
                         <form>  
                                 <div style="text-align:center;">  
                                     <a href="https://www.google.es/maps?f=d" target="_blank">  
-                                    <img src="img/map.jpg" class="img-rounded" alt="" width="80" height="80"> 
+                                    <img src="{{ asset('img/map.jpg') }}" class="img-rounded" alt="" width="80" height="80"> 
                                     </a>
                                     <p class="text-muted">Hacer click para abrir mapa</p>
                                 </div>
