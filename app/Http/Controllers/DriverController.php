@@ -115,7 +115,7 @@ class DriverController extends Controller
         $persona->save();
 
         $datos['persons_id'] = $persona->id;
-
+        
         $chofer = new Driver($datos);
         $chofer->save();
 

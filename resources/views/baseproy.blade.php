@@ -12,11 +12,11 @@
   <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/paginacion.css')}}">
 
-  <title>Hello, world!</title>
+  <title>Taxis VIP</title>
 </head>
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">TaxiVIP</a>
+    <a class="navbar-brand" href="{{ route('panel') }}">TaxiVIP</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
       aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,8 @@
           <a class="nav-link" href="{{route('crearChofer')}}">Agregar Empleados</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <form action="{{ route('logout') }}" method="POST" class="form-inline my-2 my-lg-0">
+        @csrf
         <button class="btn btn-secondary my-2 my-sm-2" type="submit">Cerrar sesion</button>
       </form>
     </div>
@@ -51,7 +52,7 @@
 </header>
 
 <body>
-  <div class="container-fluid my-3">
+  <div class="container-fluid mt-2">
     @yield('info')
   </div>
 

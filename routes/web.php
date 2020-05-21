@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|secretaria']], function () {
 
+    Route::get('', 'PanelController@index')->name('panel');
+
     // Choferes, activos, inactivos y en carrera
     Route::get('/choferes', 'DriverController@index')->name('choferes');
     Route::get('/choferes/activos', 'DriverController@activos')->name('activos');

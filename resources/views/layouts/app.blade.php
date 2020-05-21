@@ -33,7 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                            @if (Auth::user()->access_level == 1 || Auth::user()->access_level == 2)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('panel') }}">Panel</a>
+                                </li>
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
