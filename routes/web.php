@@ -56,6 +56,19 @@ Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|s
     Route::get('/carrera', 'OrderController@create')->name('carrera');
 });
 
+//ZONAS RUTAS DE PRUEBA
+
+Route::get('/zonas/agregarZona', function () {
+    return view('/zonas/agregarZona');
+})->name('agregarZona');
+
+Route::get('/zonas/listaZonas', function () {
+    return view('/zonas/listaZonas');
+})->name('listaZonas');
+
+Route::get('/zonas/zona', function () {
+    return view('/zonas/zona');
+})->name('zona');
 
 
 /*********************************MOVIL ROUTES************************************/
