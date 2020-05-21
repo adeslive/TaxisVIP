@@ -78,6 +78,10 @@ class DriverController extends Controller
         return redirect()->back();
     }
 
+    public function encarrera(){
+        $choferes = Driver::where('careerstatus', '=', '1')->get();
+        return view('choferes.encarrera', ['drivers' => $choferes]);
+    }
     /**
      * Show the form for creating a new resource.
      *

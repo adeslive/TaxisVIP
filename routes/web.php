@@ -20,12 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::get('/choferes', 'DriverController@index')->name('choferes');
 Route::get('/choferes/activos', 'DriverController@activos')->name('activos');
 Route::get('/choferes/inactivos', 'DriverController@inactivos')->name('inactivos');
-Route::get('/choferes/encarrera', function(){ return view('choferes.encarrera'); })->name('encarrera');
+Route::get('/choferes/encarrera', 'DriverController@encarrera')->name('encarrera');
 
 Route::get('/choferes/{chofer}/activar', 'DriverController@activar')->name('activar');
 Route::get('/choferes/{chofer}/inactivar', 'DriverController@inactivar')->name('inactivar');
@@ -43,7 +41,7 @@ Route::get('/choferes/multas/{chofer}', 'InfractionController@index')->name('mul
 Route::get('/choferes/multa/{chofer}', 'InfractionController@create')->name('crearMulta');
 Route::post('/choferes/multa/{chofer}', 'InfractionController@store')->name('crearMultaAccion');
 
-Route::get('carrera', function () {
+Route::get('/carrera', function () {
     return view('carrera');
 })->name('carrera');
 

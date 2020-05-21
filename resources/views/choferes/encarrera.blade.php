@@ -15,140 +15,34 @@
     </thead>
     <tbody id="myTable">
       
-      <tr>
-        <th scope="row" class="align-middle">
-          <div style="text-align:center;">
-            <span class="fas fa-user fa-4x text-center"></span> 
-            <p><small class="text-muted">Nombre Apellido</small></p>  
-          </div>               
-        </th>
-        <td>
-          <p><small class="text-muted">No. Placa: </small> <small>PDU8515</small></p>
-          <p><small class="text-muted">Telefono: </small> <small>32945113</small></p>
-          <p><small class="text-muted">Punto de inicio: </small> <small>Cerro Grande. sector #3</small></p>
-          <p><small class="text-muted">Punto Final: </small> <small>Kennedy, primera entrada atras de la colonia</small></p>
-        </td>
-        <td class="align-middle">
-            <fieldset>
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
-                        <label class="custom-control-label" for="customCheck1">Cliente en movil</label>
-                    </div>
-                </div>
-            </fieldset>
-        </td>
-        <td></td>
-        <td class="align-middle"><button type="button" class="btn btn-primary align-middel">Terminar Carrera</button></td>
-      </tr>
-
-      <tr>
-        <th scope="row" class="align-middle">
-          <div style="text-align:center;">
-            <span class="fas fa-user fa-4x text-center"></span> 
-            <p><small class="text-muted">Nombre Apellido</small></p>  
-          </div>               
-        </th>
-        <td>
-          <p><small class="text-muted">No. Placa: </small> <small>PDU8515</small></p>
-          <p><small class="text-muted">Telefono: </small> <small>32945113</small></p>
-          <p><small class="text-muted">Punto de inicio: </small> <small>Cerro Grande. sector #3</small></p>
-          <p><small class="text-muted">Punto Final: </small> <small>Kennedy, primera entrada atras de la colonia</small></p>
-        </td>
-        <td class="align-middle">
-            <fieldset>
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck2" checked="">
-                        <label class="custom-control-label" for="customCheck2">Cliente en movil</label>
-                    </div>
-                </div>
-            </fieldset>
-        </td>
-        <td></td>
-        <td class="align-middle"><button type="button" class="btn btn-primary align-middel">Terminar Carrera</button></td>
-      </tr>
-      
-      <tr>
-        <th scope="row" class="align-middle">
-          <div style="text-align:center;">
-            <span class="fas fa-user fa-4x text-center"></span> 
-            <p><small class="text-muted">Nombre Apellido</small></p>  
-          </div>               
-        </th>
-        <td>
-          <p><small class="text-muted">No. Placa: </small> <small>PDU8515</small></p>
-          <p><small class="text-muted">Telefono: </small> <small>32945113</small></p>
-          <p><small class="text-muted">Punto de inicio: </small> <small>Cerro Grande. sector #3</small></p>
-          <p><small class="text-muted">Punto Final: </small> <small>Kennedy, primera entrada atras de la colonia</small></p>
-        </td>
-        <td class="align-middle">
-            <fieldset>
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck3" checked="">
-                        <label class="custom-control-label" for="customCheck3">Cliente en movil</label>
-                    </div>
-                </div>
-            </fieldset>
-        </td>
-        <td></td>
-        <td class="align-middle"><button type="button" class="btn btn-primary align-middel">Terminar Carrera</button></td>
-      </tr>
-
-      <tr>
-        <th scope="row" class="align-middle">
-          <div style="text-align:center;">
-            <span class="fas fa-user fa-4x text-center"></span> 
-            <p><small class="text-muted">Nombre Apellido</small></p>  
-          </div>               
-        </th>
-        <td>
-          <p><small class="text-muted">No. Placa: </small> <small>PDU8515</small></p>
-          <p><small class="text-muted">Telefono: </small> <small>32945113</small></p>
-          <p><small class="text-muted">Punto de inicio: </small> <small>Cerro Grande. sector #3</small></p>
-          <p><small class="text-muted">Punto Final: </small> <small>Kennedy, primera entrada atras de la colonia</small></p>
-        </td>
-        <td class="align-middle">
-            <fieldset>
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck4" checked="">
-                        <label class="custom-control-label" for="customCheck4">Cliente en movil</label>
-                    </div>
-                </div>
-            </fieldset>
-        </td>
-        <td></td>
-        <td class="align-middle"><button type="button" class="btn btn-primary align-middel">Terminar Carrera</button></td>
-      </tr>
-
-      <tr>
-        <th scope="row" class="align-middle">
-          <div style="text-align:center;">
-            <span class="fas fa-user fa-4x text-center"></span> 
-            <p><small class="text-muted">Nombre Apellido</small></p>  
-          </div>               
-        </th>
-        <td>
-          <p><small class="text-muted">No. Placa: </small> <small>PDU8515</small></p>
-          <p><small class="text-muted">Telefono: </small> <small>32945113</small></p>
-          <p><small class="text-muted">Punto de inicio: </small> <small>Cerro Grande. sector #3</small></p>
-          <p><small class="text-muted">Punto Final: </small> <small>Kennedy, primera entrada atras de la colonia</small></p>
-        </td>
-        <td class="align-middle">
-            <fieldset>
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck5" checked="">
-                        <label class="custom-control-label" for="customCheck5">Cliente en movil</label>
-                    </div>
-                </div>
-            </fieldset>
-        </td>
-        <td></td>
-        <td class="align-middle"><button type="button" class="btn btn-primary align-middel">Terminar Carrera</button></td>
-      </tr>
+      @foreach ($drivers as $driver)
+        <tr>
+          <th scope="row" class="align-middle">
+            <div style="text-align:center;">
+              <span class="fas fa-user fa-4x text-center"></span> 
+              <p><small class="text-muted">Nombre Apellido</small></p>  
+            </div>               
+          </th>
+          <td>
+            <p><small class="text-muted">No. Placa: </small> <small>PDU8515</small></p>
+            <p><small class="text-muted">Telefono: </small> <small>32945113</small></p>
+            <p><small class="text-muted">Punto de inicio: </small> <small>Cerro Grande. sector #3</small></p>
+            <p><small class="text-muted">Punto Final: </small> <small>Kennedy, primera entrada atras de la colonia</small></p>
+          </td>
+          <td class="align-middle">
+              <fieldset>
+                  <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck3" checked="">
+                          <label class="custom-control-label" for="customCheck3">Cliente en movil</label>
+                      </div>
+                  </div>
+              </fieldset>
+          </td>
+          <td></td>
+          <td class="align-middle"><button type="button" class="btn btn-primary align-middel">Terminar Carrera</button></td>
+        </tr>
+      @endforeach
 
     </tbody>
   </table>
