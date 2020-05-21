@@ -46,8 +46,8 @@
                 <div class="btn-group" role="group">
                     <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
-                            <a class="dropdown-item" href="#">Lista Zonas</a>
-                            <a class="dropdown-item" href="#">Agregar Zonas</a>
+                            <a class="dropdown-item" href="{{route('listaZonas')}}">Lista Zonas</a>
+                            <a class="dropdown-item" href="{{route('agregarZona')}}">Agregar Zonas</a>
                         </div>
                 </div>
             </div>
