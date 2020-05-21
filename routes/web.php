@@ -62,7 +62,7 @@ Route::get('/zonas/agregarZona', function () {
 
 Route::get('/zonas/listaZonas', function () {
     return view('/zonas/listaZonas');
-})->name('lsitaZonas');
+})->name('listaZonas');
 
 Route::get('/zonas/zona', function () {
     return view('/zonas/zona');
