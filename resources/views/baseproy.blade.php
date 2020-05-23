@@ -56,6 +56,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{route('crearChofer')}}">Agregar Empleados</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('listaCarreras')}}">Ver carreras</a>
+        </li>
       </ul>
       <form action="{{ route('logout') }}" method="POST" class="form-inline my-2 my-lg-0">
         @csrf
