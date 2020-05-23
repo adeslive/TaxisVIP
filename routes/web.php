@@ -70,6 +70,12 @@ Route::get('/zonas/zona', function () {
     return view('/zonas/zona');
 })->name('zona');
 
+//LISTA DE CARRERAS RUTA DE PRUEBA
+
+Route::get('listaCarreras', function () {
+    return view('listaCarreras');
+})->name('listaCarreras');
+
 
 /*********************************MOVIL ROUTES************************************/
 Route::get('/bienvenido','DriverMovilController@index')->name('choferesMovil');
