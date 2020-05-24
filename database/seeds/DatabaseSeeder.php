@@ -17,10 +17,20 @@ class DatabaseSeeder extends Seeder
                 'id' => 1, 
                 'name'=> 'Admin', 
                 'email' => 'admin@taxisvip.com',
+                'phone' => '00000000',
                 'password' => '$2y$10$/XUWv6ZCsS44JuIs4pmS4ONfXgidbhDbAFRo64NoWTMr9Q6eHst6S',
                 'access_level' => 1
+            ],
+            [
+                'id' => 2, 
+                'name'=> 'Secretaria', 
+                'email' => 'manejo@taxisvip.com',
+                'phone' => '00000001',
+                'password' => '$2y$10$/XUWv6ZCsS44JuIs4pmS4ONfXgidbhDbAFRo64NoWTMr9Q6eHst6S',
+                'access_level' => 2
             ]
         ]);
+
         factory(App\Vehicle::class, 10)->create();
     }
 }

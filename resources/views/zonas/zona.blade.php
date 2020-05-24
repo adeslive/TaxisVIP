@@ -14,85 +14,38 @@
             <div class="card-body">
                 <h4 class = "card-title">Colonias:</h4>
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
-
                     <table class="table  table-striped mb-0">
-                    <thead>
-                        <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre colonia</th>
-                        <th scope="col"></th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td scope="row">1</td>
-                        <td>Cerro Grande</td>
-                        <td class="align-middle">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
-                        </tr>
-
-                        <tr>
-                        <td scope="row">2</td>
-                        <td>Col. Roble Oeste</td>
-                        <td class="align-middle">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
-                        </tr>
-
-                        <tr>
-                        <td scope="row">3</td>
-                        <td>Res. Las Uvas</td>
-                        <td class="align-middle">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
-                        </tr>
-
-                        <tr>
-                        <td scope="row">4</td>
-                        <td>Hato de enmedio</td>
-                        <td class="align-middle">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
-                        </tr>
-
-                        <tr>
-                        <td scope="row">5</td>
-                        <td>Villa Nueva</td>
-                        <td class="align-middle">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
-                        </tr>
-
-                        <tr>
-                        <td scope="row">6</td>
-                        <td>Villas del sol</td>
-                        <td class="align-middle">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </td>
-                        </tr>
-                    
-                    </tbody>
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre colonia</th>
+                            <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($zone->colonies as $colony)
+                            <tr>
+                                <td scope="row">{{ $loop->index }}</td>
+                                <td>{{ $colony->colony }}</td>
+                                <td class="align-middle">
+                                    <a class="delete" data-colony="{{ $colony->id }}" type="button" class="close" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <br>
                 <br>
-                <div style="text-align:right;">
-                    <button type="button" class="btn btn-danger"> Eliminar Zona </button>
-                </div>
+                <form action="{{ route('borrarZona', $zone->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <div style="text-align:right;">
+                        <button type="submit" class="btn btn-danger"> Eliminar Zona </button>
+                    </div>
+                </form>
                 <br>
 
             </div>
@@ -102,14 +55,15 @@
         <div class="card border-warning">
             <div class = "card-header text-center"> <h4>Agregar colonia</h4></div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('crearColonia', $zone->id) }}" method="POST">
+                    @csrf
                     <div class="form-group">
-                        <label for="nombreColonia">Nombre colonia:</label>
-                        <input type="text" class="form-control" id="nombreColonia" placeholder="">
+                        <label for="colony">Nombre colonia:</label>
+                        <input type="text" class="form-control" name="colony" placeholder="" required>
                     </div>
 
                     <br>
-                    <div style="text-align:center;"><button type="submit" class="btn btn-warning">Agregar</button></div>
+                    <div style="text-align:center;"><input type="submit" class="btn btn-warning"></div>
                 </form>
             </div>
         </div>

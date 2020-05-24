@@ -8,47 +8,8 @@
             <div class="card border-primary mb-6" style="max-width: 30rem;">
                 <div class="card-header text-primary" style="text-align:center;">Agregar Chofer</div>
                 <div class="card-body">
-                    <form action="{{ $route }}" method="POST">
-                        {{ csrf_field() }}
-                        @if(isset($chofer))
-                            @method("PUT")
-                            <div class="form-group">
-                                <label for="nombreChofer">Nombre:</label>
-                                <input type="text" required class="form-control" id="nombreChofer" name="name" placeholder="" value="{{$chofer[0]->name}}"> 
-                            </div>
-                            <div class="form-group">
-                                <label for="apellidoChofer">Apellido:</label>
-                                <input type="text" required class="form-control" id="apellidoChofer" name="lastname" placeholder="" value="{{$chofer[0]->lastname}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="emailChofer">Identidad:</label>
-                                <input type="text" required class="form-control" id="identidadChofer" name="identity" placeholder="" value="{{$chofer[0]->identity}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="telefonoChofer">Telefono:</label>
-                                <input type="tel" required class="form-control" id="telefonoChofer" name="phone" maxlength=8 pattern="[0-9]{4}[0-9]{4}" placeholder="" value="{{$chofer[0]->phone}}">
-                                <small class="form-text text-muted">@error('phone') {{$message}} @enderror</small>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="emailChofer">Email:</label>
-                                <input type="email" required class="form-control" id="emailChofer" name="mail" placeholder="" value="{{$chofer[0]->mail}}"> 
-                                <small class="form-text text-muted">@error('mail') {{$message}} @enderror</small>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="zonaChofer">Zona</label>
-                                <select class="form-control" required id="zonaChofer" name="zones_id" >
-                                    @foreach($zones as $zona)
-                                    @if ($zona->id == $chofer[0]->zones_id)
-                                    <option selected value="{{$zona->id}}">{{$zona->zones}}</option>
-                                    @else
-                                    <option value="{{$zona->id}}">{{$zona->zones}}</option>
-                                    @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        @else
+                    <form action="{{ route('crearChoferAccion') }}" method="POST">
+                            @csrf
                             @method("POST")
                             <div class="form-group">
                                 <label for="nombreChofer">Nombre:</label>
@@ -63,6 +24,11 @@
                                 <input type="text" required class="form-control" id="identidadChofer" name="identity" placeholder="">
                             </div>
                             <div class="form-group">
+                                <label for="licenciaChofer">Licencia:</label>
+                                <input type="text" required class="form-control" id="licenciaChofer" name="license"
+                                    placeholder="">
+                            </div>
+                            <div class="form-group">
                                 <label for="telefonoChofer">Telefono:</label>
                                 <input type="tel" required class="form-control" id="telefonoChofer" name="phone" maxlength=8 pattern="[0-9]{4}[0-9]{4}" placeholder="">
                                 <small class="form-text text-muted">@error('phone') {{$message}} @enderror</small>
@@ -70,8 +36,8 @@
                             
                             <div class="form-group">
                                 <label for="emailChofer">Email:</label>
-                                <input type="email" required class="form-control" id="emailChofer" name="mail" placeholder="" > 
-                                <small class="form-text text-muted">@error('mail') {{$message}} @enderror</small>
+                                <input type="email" required class="form-control" id="emailChofer" name="email" placeholder="" > 
+                                <small class="form-text text-muted">@error('email') {{$message}} @enderror</small>
                             </div>
 
                             <div class="form-group">
@@ -86,7 +52,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        @endif
+                   
                     
                         <br>
                         <hr>

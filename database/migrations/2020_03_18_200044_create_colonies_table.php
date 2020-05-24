@@ -17,7 +17,7 @@ class CreateColoniesTable extends Migration
             $table->bigIncrements('id');
             $table->string('colony');
             $table->unsignedBigInteger('zones_id');
-            $table->foreign('zones_id')->references('id')->on('zones');
+            $table->foreign('zones_id')->references('id')->on('zones')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class CreateZonesTable extends Migration
             $table->bigIncrements('id');
             $table->string('zones', 45);
             $table->timestamps();
+            $table->tinyInteger('active')->default(1);
         });
     }
 

@@ -14,7 +14,8 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        //
+        $zonas = Zone::paginate(6);
+        return view('zonas.listaZonas', ['zonas' => $zonas]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ZoneController extends Controller
      */
     public function create()
     {
-        //
+        return view('zonas.agregarZona');
     }
 
     /**
@@ -35,7 +36,9 @@ class ZoneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $zona = new Zone($request->except('_token'));
+        $zona->save();
+        return redirect()->back();
     }
 
     /**
@@ -46,7 +49,7 @@ class ZoneController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('zonas.zona', ['zone' => Zone::find($id)]);
     }
 
     /**
@@ -80,6 +83,9 @@ class ZoneController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $zona = Zone::findOrFail($id);
+        $zona->active = 0;
+        $zona->save();
+        return redirect(route('listaZonas'));
     }
 }

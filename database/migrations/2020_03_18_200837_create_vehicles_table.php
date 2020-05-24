@@ -23,7 +23,7 @@ class CreateVehiclesTable extends Migration
             $table->string('model', 45);
             $table->boolean('designated')->default(0);
             $table->unsignedBigInteger('drivers_id');
-            $table->foreign('drivers_id')->references('id')->on('drivers');
+            $table->foreign('drivers_id')->references('id')->on('drivers')->onDelete('cascade');
             $table->timestamps();
         });
     }

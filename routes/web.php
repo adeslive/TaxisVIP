@@ -53,23 +53,19 @@ Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|s
     Route::post('/choferes/multa/{chofer}', 'InfractionController@store')->name('crearMultaAccion');
 
     // Metodos para la carrera
-    Route::get('/carrera', 'OrderController@create')->name('carrera');
+    Route::get('/carrera/{chofer}', 'OrderController@create')->name('carrera');
 });
 
 //ZONAS RUTAS DE PRUEBA
+Route::get('/zonas/agregarZona', 'ZoneController@create')->name('agregarZona');
+Route::get('/zonas/listaZonas', 'ZoneController@index')->name('listaZonas');
+Route::get('/zonas/{zona}', 'ZoneController@show')->name('zona');
+Route::post('/zonas', 'ZoneController@store')->name('crearZona');
+Route::delete('/zonas/{zona}', 'ZoneController@destroy')->name('borrarZona');
 
-Route::get('/zonas/agregarZona', function () {
-    return view('/zonas/agregarZona');
-})->name('agregarZona');
-
-Route::get('/zonas/listaZonas', function () {
-    return view('/zonas/listaZonas');
-})->name('listaZonas');
-
-Route::get('/zonas/zona', function () {
-    return view('/zonas/zona');
-})->name('zona');
-
+//COLONIAS
+Route::post('/colonias/{zone}', 'ColonyController@store')->name('crearColonia');
+Route::delete('/colonias/{colony}', 'ColonyController@destroy')->name('borrarColonia');
 
 /*********************************MOVIL ROUTES************************************/
 Route::get('/bienvenido','DriverMovilController@index')->name('choferesMovil');

@@ -8,10 +8,11 @@
                 <div class="card border-warning mb-6" style="max-width: 30rem;">
                     <div class="card-header text-warning" style="text-align:center;">Agregar Zona</div>
                         <div class="card-body">
-                            <form>
+                            <form action="{{ route('crearZona') }}" method="POST">
+                                @csrf
                                 <div class="form-group">
-                                  <label for="nombreChofer">Nombre Zona:</label>
-                                  <input type="text" class="form-control" id="nombreChofer" placeholder="">
+                                  <label for="zones">Nombre Zona:</label>
+                                  <input type="text" class="form-control" name="zones" placeholder="" required>
                                 </div>
                                 
                                 

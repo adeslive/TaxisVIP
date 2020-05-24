@@ -21,8 +21,8 @@ class CreateDriversTable extends Migration
             $table->decimal('mileage')->nullable()->default('0');
             $table->unsignedBigInteger('zones_id')->nullable();
             $table->foreign('zones_id')->references('id')->on('zones');
-            $table->unsignedBigInteger('persons_id');
-            $table->foreign('persons_id')->references('id')->on('persons');
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

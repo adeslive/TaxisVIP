@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Driver;
 use App\Person;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
 class DriverController extends Controller
@@ -16,48 +19,23 @@ class DriverController extends Controller
      */
     public function index()
     {
-        $datos['choferes'] = DB::table('persons')
-                                ->join('drivers','persons.id','=','drivers.persons_id')
-                                ->join('zones','drivers.zones_id','=','zones.id')
-                                ->select('persons.*', 'zones.zones', 'drivers.status', 'drivers.id as idchofer')
-                                ->paginate(5);
-    
-        $datos['autos'] = DB::table('vehicles')->get();
-   
-        return view('choferes.choferes', $datos);
+        $choferes = Driver::paginate(5);   
+        return view('choferes.choferes', ['choferes' => $choferes]);
     }
 
     public function activos()
     {
-        $datos['choferes'] = DB::table('persons')
-                                ->join('drivers','persons.id','=','drivers.persons_id')
-                                ->join('zones','drivers.zones_id','=','zones.id')
-                                ->select('persons.name', 'persons.lastname', 'persons.phone', 'zones.zones', 'drivers.*')
-                                ->where('status', '=', '1')
-                                ->paginate(5);
+        $choferes = Driver::where('status', '=', '1')->paginate(5);
 
-        $datos['autos'] = DB::table('vehicles')
-                            ->where('designated', '1')
-                            ->get();
-
-        return view('choferes.activos', $datos);
+        return view('choferes.activos', ['choferes' => $choferes]);
     }
 
 
     public function inactivos()
     {
-        $datos['choferes'] = DB::table('persons')
-                                ->join('drivers','persons.id','=','drivers.persons_id')
-                                ->join('zones','drivers.zones_id','=','zones.id')
-                                ->select('persons.name', 'persons.lastname', 'persons.phone', 'zones.zones', 'drivers.*')
-                                ->where('status', '=', '0')
-                                ->paginate(5);
+        $choferes = Driver::where('status', '=', '0')->paginate(5);
 
-        $datos['autos'] = DB::table('vehicles')
-                            ->where('designated', '1')
-                            ->get();
-
-        return view('choferes.inactivos', $datos);
+        return view('choferes.inactivos', ['choferes' => $choferes]);
     }
 
     public function activar($id)
@@ -90,9 +68,7 @@ class DriverController extends Controller
     public function create()
     {
         $zones = DB::table('zones')->select('*')->get();
-        $route = route('crearChoferAccion');
-
-        return view('choferes.agregarChofer', ['zones' => $zones, 'route' => $route]);
+        return view('choferes.agregarChofer', ['zones' => $zones]);
     }
 
     /**
@@ -104,17 +80,20 @@ class DriverController extends Controller
     public function store(Request $request)
     {
         $messages = $request->validate([
-            'identity' => 'required|numeric|unique:persons',
-            'mail' => 'required|email|unique:persons,mail',
-            'phone' => 'required|unique:persons,phone'
+            'identity' => 'required|numeric|unique:users',
+            'license' => 'required|string|unique:drivers,license',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|unique:users,phone'
         ]);
 
         $datos = $request->except(['_token', '_method']);
+        $datos['password'] = password_hash(Str::random(5), PASSWORD_DEFAULT);
+        $datos['access_level'] = 3;
 
-        $persona = new Person($datos);
-        $persona->save();
+        $user = new User($datos);
+        $user->save();
 
-        $datos['persons_id'] = $persona->id;
+        $datos['users_id'] = $user->id;
         
         $chofer = new Driver($datos);
         $chofer->save();
@@ -143,17 +122,13 @@ class DriverController extends Controller
     {
         Driver::findOrFail($id);
 
-        $datos['chofer'] = DB::table('persons')
-                                    ->join('drivers','persons.id','=','drivers.persons_id')
-                                    ->join('zones','drivers.zones_id','=','zones.id')
-                                    ->select('persons.*', 'zones.zones', 'drivers.status', 'drivers.zones_id')
-                                    ->where('drivers.id','=', $id)
-                                    ->get();
+        $datos['chofer'] = Driver::findOrFail($id);
+
         $datos['zones'] = DB::table('zones')->select('*')->get();
 
         $datos['route'] = route('modificarChoferAccion', $id);
 
-        return view('choferes.agregarChofer', $datos);
+        return view('choferes.editarChofer', $datos);
     }
 
     /**
@@ -164,22 +139,23 @@ class DriverController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        
+    {  
         $chofer = Driver::findOrFail($id);
-        $chofer->license = $request->license;
+        $user = User::findOrFail($chofer->person->id);
+
+        $request->validate([
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
+            'phone' => ['required', Rule::unique('users', 'phone')->ignore($user)]
+        ]);
+
         $chofer->zones_id = $request->zones_id;
+        $user->name = $request->name;
+        $user->lastname = $request->lastname;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+
+        $user->save();
         $chofer->save();
-
-        $persona = Person::findOrFail($chofer->persons_id);
-
-        $persona->name = $request->name;
-        $persona->lastname = $request->lastname;
-        $persona->mail = $request->mail;
-        $persona->phone = $request->phone;
-        $persona->identity = $request->identity;
-
-        $persona->save();
 
         return redirect()->back();
     }

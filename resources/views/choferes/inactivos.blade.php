@@ -20,17 +20,19 @@
         <th scope="row" class="align-middle">
           <div style="text-align:center;">
             <span class="fas fa-user fa-4x text-center"></span>
-            <p><small class="text-muted">{{$chofer->name}} {{$chofer->lastname}}</small></p>
+            <p><small class="text-muted">{{$chofer->person->name}} {{$chofer->person->lastname}}</small></p>
           </div>
         </th>
         <td>
-          @foreach($autos as $auto) @if($auto->drivers_id == $chofer->id)
+          @foreach($chofer->cars as $auto)
+            @if ($auto->designated == 1)
           <p><small class="text-muted">No. Placa: </small> <small>{{$auto->vehiclelicense}}</small><small>&nbsp
               &nbsp</small><small class="text-muted">Telefono: </small> <small>{{$chofer->phone}}</small></p>
           <p><small class="text-muted">Descripcion vehiculo: </small><small>
               <div class="10">Auto marca {{$auto->brand}}, modelo {{$auto->model}}, color {{$auto->color}}.</div>
             </small></p>
-          @endif @endforeach
+            @endif
+          @endforeach
         </td>
         <td class="align-middle">
           <div style="text-align:center;">

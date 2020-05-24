@@ -53,9 +53,12 @@
             </div>
         </li>
         
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('crearChofer')}}">Agregar Empleados</a>
-        </li>
+        @if (Auth::user()->access_level == 1)
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('crearChofer')}}">Agregar Empleados</a>
+          </li>
+        @endif        
+        
       </ul>
       <form action="{{ route('logout') }}" method="POST" class="form-inline my-2 my-lg-0">
         @csrf
@@ -83,6 +86,7 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/paginacion.js')}}"></script>
+  @yield('scripts')
 </body>
 
 </html>

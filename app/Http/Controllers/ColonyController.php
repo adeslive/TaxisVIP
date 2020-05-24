@@ -33,9 +33,14 @@ class ColonyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $zona)
     {
-        //
+        $colony = new Colony();
+        $colony->colony = $request->get('colony');
+        $colony->zones_id = $zona;
+        $colony->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +85,8 @@ class ColonyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $colony = Colony::find($id);
+        $colony->delete();
+        return response();
     }
 }
