@@ -1,0 +1,23 @@
+.results tr[visible='false'],
+.no-result{
+    display:none;
+}
+  
+.results tr[visible='true']{
+    display:table-row;
+}
+  
+.counter{
+    padding:8px; 
+    color:rgba(79, 99, 107, 0.658);
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 370px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+display: block;
+}

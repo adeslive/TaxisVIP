@@ -67,6 +67,12 @@ Route::delete('/zonas/{zona}', 'ZoneController@destroy')->name('borrarZona');
 Route::post('/colonias/{zone}', 'ColonyController@store')->name('crearColonia');
 Route::delete('/colonias/{colony}', 'ColonyController@destroy')->name('borrarColonia');
 
+//LISTA DE CARRERAS RUTA DE PRUEBA
+
+Route::get('listaCarreras', function () {
+    return view('listaCarreras');
+})->name('listaCarreras');
+
 /*********************************MOVIL ROUTES************************************/
 Route::get('/bienvenido','DriverMovilController@index')->name('choferesMovil');
 Route::get('/bienvenido/nuevaCarrera/{driver_id}','DriverMovilController@newCarreer')->name('nuevaCarrera');
