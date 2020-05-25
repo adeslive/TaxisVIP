@@ -70,9 +70,7 @@ Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|s
 
     //LISTA DE CARRERAS RUTA DE PRUEBA
 
-    Route::get('listaCarreras', function () {
-        return view('listaCarreras');
-    })->name('listaCarreras');
+    Route::get('listaCarreras', 'OrderController@index')->name('listaCarreras');
 
     //RUTAS DE CLIENTES (PRUEBA)
 
@@ -80,9 +78,7 @@ Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|s
         return view('/clientes/agregarCliente');
     })->name('agregarCliente');
 
-    Route::get('/clientes/listaClientes', function () {
-        return view('/clientes/listaClientes');
-    })->name('listaClientes');
+    Route::get('/clientes/listaClientes', 'CustomerController@index')->name('listaClientes');
 });
 
 /*********************************MOVIL ROUTES************************************/

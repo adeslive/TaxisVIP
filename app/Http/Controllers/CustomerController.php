@@ -14,7 +14,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::where('id', '<>', '1')->get();
+        return view('clientes.listaClientes', ['customers' => $customers]);
     }
 
     /**

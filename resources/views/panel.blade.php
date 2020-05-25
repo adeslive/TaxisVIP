@@ -11,13 +11,20 @@
             <div class="card-body">
                 <div class="row my-2">
                     @foreach ($choferesActivos as $chofer)
-                    <div class="col-sm-2 p-2 justify-content-center"
-                    data-toggle="popover" data-placement="bottom"
+                    <div class="col-sm-2 p-2 justify-content-center">
+                        @if ($chofer->photo == null)
+                            <i class="fas fa-user fa-3x" style="margin:auto" data-toggle="popover" data-placement="bottom"
                             title="{{ $chofer->person->name . ' ' . $chofer->person->lastname }}"
                             data-trigger="click"
                             data-html="true"
-                            data-content="<a class='btn btn-warning' href='{{ route('inactivar', $chofer->id) }}' type='button'> Desactivar </a> <a class='btn btn-success' href='{{ route('carrera', $chofer->id) }}' type='button'> Carrera </a>">
-                        <i class="fas fa-user fa-3x"></i>
+                            data-content="<a class='btn btn-warning' href='{{ route('inactivar', $chofer->id) }}' type='button'> Desactivar </a> <a class='btn btn-success' href='{{ route('carrera', $chofer->id) }}' type='button'> Carrera </a>"></i>
+                        @else
+                            <img width="45" src="{{ asset('storage') . '/' . $chofer->photo }}" style="margin:auto" data-toggle="popover" data-placement="bottom"
+                                title="{{ $chofer->person->name . ' ' . $chofer->person->lastname }}"
+                                data-trigger="click"
+                                data-html="true"
+                                data-content="<a class='btn btn-warning' href='{{ route('inactivar', $chofer->id) }}' type='button'> Desactivar </a> <a class='btn btn-success' href='{{ route('carrera', $chofer->id) }}' type='button'> Carrera </a>">
+                        @endif
                     </div>
                     @endforeach
                 </div>
@@ -33,11 +40,19 @@
                 <div class="row">
                     @foreach ($choferesInactivos as $chofer)
                     <div class="col-sm-2 p-2 justify-content-center">
-                        <i class="fas fa-user fa-3x" style="margin:auto" data-toggle="popover" data-placement="bottom"
+                        @if ($chofer->photo == null)
+                            <i class="fas fa-user fa-3x" style="margin:auto" data-toggle="popover" data-placement="bottom"
                             title="{{ $chofer->person->name . ' ' . $chofer->person->lastname }}"
                             data-trigger="click"
                             data-html="true"
                             data-content="<a class='btn btn-primary' href='{{ route('activar', $chofer->id) }}' type='button'> Activar </a>"></i>
+                        @else
+                            <img width="45" src="{{ asset('storage') . '/' . $chofer->photo }}" style="margin:auto" data-toggle="popover" data-placement="bottom"
+                                title="{{ $chofer->person->name . ' ' . $chofer->person->lastname }}"
+                                data-trigger="click"
+                                data-html="true"
+                                data-content="<a class='btn btn-primary' href='{{ route('activar', $chofer->id) }}' type='button'> Activar </a>">
+                        @endif
                     </div>
                     @endforeach
                 </div>
@@ -54,11 +69,19 @@
                 <div class="row">
                     @foreach ($choferesEnCarrera as $chofer)
                     <div class="col-sm-2 p-2 justify-content-center">
-                        <i class="fas fa-user fa-3x" style="margin:auto" data-toggle="popover" data-placement="bottom"
+                        @if ($chofer->photo == null)
+                            <i class="fas fa-user fa-3x" style="margin:auto" data-toggle="popover" data-placement="bottom"
                             title="{{ $chofer->person->name . ' ' . $chofer->person->lastname }}"
                             data-trigger="click"
                             data-html="true"
-                            data-content="<a class='btn btn-primary' href='' type='button'> Ver Carrera </a>"></i>
+                            data-content="<a class='btn btn-primary' href='{{ route('activar', $chofer->id) }}' type='button'> Activar </a>"></i>
+                        @else
+                            <img width="45" src="{{ asset('storage') . '/' . $chofer->photo }}" style="margin:auto" data-toggle="popover" data-placement="bottom"
+                                title="{{ $chofer->person->name . ' ' . $chofer->person->lastname }}"
+                                data-trigger="click"
+                                data-html="true"
+                                data-content="<a class='btn btn-primary' href='{{ route('activar', $chofer->id) }}' type='button'> Activar </a>">
+                        @endif
                     </div>
                     @endforeach
                 </div>
@@ -69,7 +92,7 @@
 <div class="row"></div>
 @endsection
 
-@section('scripts')
+@section('foot')
 <script>
     $(function () {
         $('[data-toggle="popover"]').click(()=>{

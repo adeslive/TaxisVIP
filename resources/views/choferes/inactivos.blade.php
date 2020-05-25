@@ -19,7 +19,7 @@
       <tr>
         <th scope="row" class="align-middle">
           <div style="text-align:center;">
-            <span class="fas fa-user fa-4x text-center"></span>
+            @if ($chofer->photo == null) <span class="fas fa-user fa-4x text-center"></span> @else <img src="{{ asset('storage') . '/'. $chofer->photo }}" width="61"> @endif
             <p><small class="text-muted">{{$chofer->person->name}} {{$chofer->person->lastname}}</small></p>
           </div>
         </th>

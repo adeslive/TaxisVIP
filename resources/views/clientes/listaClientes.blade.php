@@ -20,9 +20,9 @@
     <table class="table table-hover table-bordered results">
     <thead>
         <tr>
-        <th>#</th>
+        <th>ID Cliente</th>
         <th>Nombre</th>
-        <th>ID</th>
+        <th>Correo</th>
         <th>Telefono</th>
         </tr>
         <tr class="warning no-result">
@@ -30,52 +30,14 @@
         </tr>
     </thead>
     <tbody>
+        @foreach($customers as $customer)
         <tr>
-            <th scope="row">12</th>
-            <td>Carlos Flores</td>
-            <td>0801-1997-15548</td>
-            <td>32699874</td>
+            <th scope="row">{{ $customer->id }}</th>
+            <td>{{ $customer->person->name }} {{ $customer->person->lastname }}</td>
+            <td>{{ $customer->person->email }}</td>
+            <td>{{ $customer->person->phone }}</td>
         </tr>
-        <tr>
-            <th scope="row">15</th>
-            <td>Alejandro Zuniga</td>
-            <td>0801-1996-15447</td>
-            <td>25253265</td>
-        </tr>
-        <tr>
-            <th scope="row">17</th>
-            <td>Roberto Mendez</td>
-            <td>0801-1995-78587</td>
-            <td>95179638</td>
-        </tr>
-        <tr>
-            <th scope="row">12</th>
-            <td>Arnold Flores</td>
-            <td>0801-1998-56987</td>
-            <td>22243385</td>
-        </tr>
-        <tr>
-            <th scope="row">15</th>
-            <td>Fernando Zuniga</td>
-            <td>0801-1993-25654</td>
-            <td>36975415</td>
-        </tr>
-        <tr>
-            <th scope="row">12</th>
-            <td>Arnold Flores</td>
-            <td>0801-1998-56987</td>
-            <td>22243385</td>
-        </tr>
-        <tr>
-            <th scope="row">15</th>
-            <td>Fernando Zuniga</td>
-            <td>0801-1993-25654</td>
-            <td>36975415</td>
-        </tr>
-    </tr>
-
-
-        
+        @endforeach
     </tbody>
     </table>
 </div>

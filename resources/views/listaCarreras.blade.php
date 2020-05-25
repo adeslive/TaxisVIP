@@ -26,87 +26,36 @@
         <th>Destino</th>
         <th>Precio</th>
         <th>Fecha</th>
+        <th>Estado</th>
         </tr>
         <tr class="warning no-result">
         <td colspan="4"><i class="fa fa-warning"></i> No results</td>
         </tr>
     </thead>
     <tbody>
+        @foreach ($orders as $order)
         <tr>
-            <th scope="row">12</th>
-            <td>Carlos Flores</td>
-            <td>Cerro Grande</td>
-            <td>Hato</td>
-            <td>120</td>
-            <td>23/05/2020</td>
+            <th scope="row">{{ $order->id }}</th>
+            <td>{{ $order->driver->person->name }} {{ $order->driver->person->lastname }}</td>
+            <td>{{ $order->origin }}</td>
+            <td>{{ $order->destination }}</td>
+            <td>{{ $order->price }}</td>
+            <td>{{ $order->created_at }}</td>
+            <td>@switch($order->status)
+                @case(1)
+                    Completada
+                    @break
+                @case(2)
+                    En el taxi
+                    @break
+                @case(2)
+                    Petición
+                    @break
+                @default
+                    
+            @endswitch</td>
         </tr>
-        <tr>
-            <th scope="row">15</th>
-            <td>Alejandro Zuniga</td>
-            <td>Col el carrizal</td>
-            <td>La kennedy</td>
-            <td>140</td>
-            <td>20/05/2020</td>
-        </tr>
-        <tr>
-            <th scope="row">17</th>
-            <td>Roberto Mendez</td>
-            <td>Roble Oeste</td>
-            <td>Aeropuerto</td>
-            <td>100</td>
-            <td>23/04/2020</td>
-        </tr>
-        <tr>
-            <th scope="row">18</th>
-            <td>Carlos Flores</td>
-            <td>Villa cristina</td>
-            <td>La nueva era</td>
-            <td>120</td>
-            <td>19/05/2020</td>
-        </tr>
-        <tr>
-            <th scope="row">12</th>
-            <td>Arnold Flores</td>
-            <td>Kennedy</td>
-            <td>Hato</td>
-            <td>125</td>
-            <td>23/05/2020</td>
-        </tr>
-        <tr>
-            <th scope="row">15</th>
-            <td>Fernando Zuniga</td>
-            <td>Col el carrizal</td>
-            <td>La kennedy</td>
-            <td>160</td>
-            <td>12/05/2020</td>
-        </tr>
-    </tr>
-    <tr>
-        <th scope="row">15</th>
-        <td>Alejandro Zuniga</td>
-        <td>Col el carrizal</td>
-        <td>La kennedy</td>
-        <td>140</td>
-        <td>20/05/2020</td>
-    </tr>
-    <tr>
-        <th scope="row">17</th>
-        <td>Roberto Mendez</td>
-        <td>Roble Oeste</td>
-        <td>Aeropuerto</td>
-        <td>100</td>
-        <td>23/04/2020</td>
-    </tr>
-    <tr>
-        <th scope="row">18</th>
-        <td>Carlos Flores</td>
-        <td>Villa cristina</td>
-        <td>La nueva era</td>
-        <td>120</td>
-        <td>19/05/2020</td>
-    </tr>
-
-        
+        @endforeach
     </tbody>
     </table>
 </div>

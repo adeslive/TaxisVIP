@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Driver extends Model
 {
    protected $table = 'drivers';
-   protected $fillable = ['mileage', 'status', 'careerstatus', 'zones_id', 'users_id', 'license'];
+   protected $fillable = ['mileage', 'status', 'careerstatus', 'zones_id', 'users_id', 'license', 'photo'];
 
    public function person() {
       return $this->belongsTo('App\User', 'users_id', 'id');

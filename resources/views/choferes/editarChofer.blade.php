@@ -8,10 +8,13 @@
             <div class="card border-primary mb-6" style="max-width: 30rem;">
                 <div class="card-header text-primary" style="text-align:center;">Agregar Chofer</div>
                 <div class="card-body">
-                    <form action="{{ $route }}" method="POST">
+                    <form action="{{ $route }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
                         @method("PUT")
+                        <div class="form-group">
+                            <label for="fotoChofer">Foto:</label>
+                            <input type="file" class="form-control" id="fotoChofer" name="photo" placeholder=""> 
+                        </div>
                         <div class="form-group">
                             <label for="nombreChofer">Nombre:</label>
                             <input type="text" required class="form-control" id="nombreChofer" name="name"

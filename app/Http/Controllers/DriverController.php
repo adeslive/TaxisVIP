@@ -87,7 +87,7 @@ class DriverController extends Controller
         ]);
 
         $datos = $request->except(['_token', '_method']);
-        $datos['password'] = password_hash(Str::random(5), PASSWORD_DEFAULT);
+        $datos['password'] = password_hash($datos['license'], PASSWORD_DEFAULT);
         $datos['access_level'] = 3;
 
         $user = new User($datos);
@@ -95,6 +95,10 @@ class DriverController extends Controller
 
         $datos['users_id'] = $user->id;
         
+        if($request->hasFile('photo')) {
+            $datos['photo'] = $request->file('photo')->store('uploads', 'public');
+        }
+
         $chofer = new Driver($datos);
         $chofer->save();
 
@@ -121,11 +125,8 @@ class DriverController extends Controller
     public function edit($id)
     {
         Driver::findOrFail($id);
-
         $datos['chofer'] = Driver::findOrFail($id);
-
         $datos['zones'] = DB::table('zones')->select('*')->get();
-
         $datos['route'] = route('modificarChoferAccion', $id);
 
         return view('choferes.editarChofer', $datos);
@@ -147,6 +148,10 @@ class DriverController extends Controller
             'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
             'phone' => ['required', Rule::unique('users', 'phone')->ignore($user)]
         ]);
+
+        if($request->hasFile('photo')) {
+            $chofer->photo = $request->file('photo')->store('uploads', 'public');
+        }
 
         $chofer->zones_id = $request->zones_id;
         $user->name = $request->name;
