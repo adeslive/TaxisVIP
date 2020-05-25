@@ -55,11 +55,6 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="{{route('listaCarreras')}}">Ver carreras</a>
-        </li>
-
-        
-        <li class="nav-item">
                   <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <button type="button" class="btn btn-primary">Clientes</button>
                     <div class="btn-group" role="group">
@@ -72,6 +67,13 @@
                     </div>
                   </div>
                 </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('listaCarreras')}}">Carreras</a>
+        </li>
+
+        
+        
         
         @if (Auth::user()->access_level == 1)
           <li class="nav-item">
