@@ -59,8 +59,8 @@
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
-                        <a class="dropdown-item" href="#">Lista Clientes</a>
-                        <a class="dropdown-item" href="#">Agregar Cliente</a>
+                        <a class="dropdown-item" href="{{route('listaClientes')}}">Lista Clientes</a>
+                        <a class="dropdown-item" href="{{route('agregarCliente')}}">Agregar Cliente</a>
 
                       </div>
                     </div>
