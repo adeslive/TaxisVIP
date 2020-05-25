@@ -40,7 +40,11 @@
             <h4>{{$chofer->mileage}}</h4>
           </div>
         </td>
-        <td class="align-middle"><a type="button" class="btn btn-primary align-middle" href="{{route('activar', $chofer->id)}}">Activar</a></td>
+        @if($chofer->zone->active == 1 ) 
+          <td class="align-middle"><a type="button" class="btn btn-primary" href="{{route('activar', $chofer->id)}}">Activar</a></td>
+        @else
+        <td class="align-middle"><a type="button" class="btn btn-primary disabled" disabled>Sin Zona</a></td>
+        @endif
       </tr>
       @endforeach
     </tbody>

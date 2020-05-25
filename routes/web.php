@@ -54,13 +54,14 @@ Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|s
 
     // Metodos para la carrera
     Route::get('/carrera/{chofer}', 'OrderController@create')->name('carrera');
-});
 
-//ZONAS RUTAS DE PRUEBA
+    //ZONAS RUTAS DE PRUEBA
 Route::get('/zonas/agregarZona', 'ZoneController@create')->name('agregarZona');
 Route::get('/zonas/listaZonas', 'ZoneController@index')->name('listaZonas');
 Route::get('/zonas/{zona}', 'ZoneController@show')->name('zona');
 Route::post('/zonas', 'ZoneController@store')->name('crearZona');
+Route::put('/zonas/activar/{zona}', 'ZoneController@activate')->name('activarZona');
+Route::put('/zonas/desactivar/{zona}', 'ZoneController@deactivate')->name('desactivarZona');
 Route::delete('/zonas/{zona}', 'ZoneController@destroy')->name('borrarZona');
 
 //COLONIAS
@@ -72,6 +73,8 @@ Route::delete('/colonias/{colony}', 'ColonyController@destroy')->name('borrarCol
 Route::get('listaCarreras', function () {
     return view('listaCarreras');
 })->name('listaCarreras');
+
+});
 
 /*********************************MOVIL ROUTES************************************/
 Route::get('/bienvenido','DriverMovilController@index')->name('choferesMovil');

@@ -9,8 +9,8 @@
 <div class="container">
 <div class="row">
     <div class="col-7">
-        <div class="card border-warning">
-        <div class = "card-header text-center"> <h4> Nombre Zona</h4></div>
+        <div class="card @if($zone->active == 1) border-success @else border-danger @endif">
+        <div class = "card-header text-center"> <h4>{{ $zone->zones }}</h4></div>
             <div class="card-body">
                 <h4 class = "card-title">Colonias:</h4>
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -25,12 +25,16 @@
                         <tbody>
                             @foreach ($zone->colonies as $colony)
                             <tr>
-                                <td scope="row">{{ $loop->index }}</td>
+                                <td scope="row">{{ $colony->id }}</td>
                                 <td>{{ $colony->colony }}</td>
                                 <td class="align-middle">
-                                    <a class="delete" data-colony="{{ $colony->id }}" type="button" class="close" aria-label="Close">
+                                    <form id="{{ 'colonia-' . $colony->id }}" action="{{ route('borrarColonia', $colony->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button data-colony="{{ $colony->id }}" type="button" class="close delete" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
-                                    </a>
+                                    </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -39,20 +43,30 @@
                 </div>
                 <br>
                 <br>
-                <form action="{{ route('borrarZona', $zone->id) }}" method="POST">
+    
+                @if($zone->active == 1)
+                <form action="{{ route('desactivarZona', $zone->id) }}" method="POST">
                     @csrf
-                    @method('DELETE')
+                    @method('PUT')
                     <div style="text-align:right;">
-                        <button type="submit" class="btn btn-danger"> Eliminar Zona </button>
+                        <button type="submit" class="btn btn-danger"> Desactivar zona </button>
                     </div>
                 </form>
+                @else
+                <form action="{{ route('activarZona', $zone->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div style="text-align:right;">
+                        <button type="submit" class="btn btn-success"> Activar zona </button>
+                    </div>
+                </form>
+                @endif 
                 <br>
-
             </div>
         </div>
     </div>
     <div class="col-5"> 
-        <div class="card border-warning">
+        <div class="card @if($zone->active == 1) border-success @else border-danger @endif">
             <div class = "card-header text-center"> <h4>Agregar colonia</h4></div>
             <div class="card-body">
                 <form action="{{ route('crearColonia', $zone->id) }}" method="POST">
@@ -63,7 +77,7 @@
                     </div>
 
                     <br>
-                    <div style="text-align:center;"><input type="submit" class="btn btn-warning"></div>
+                    <div style="text-align:center;"><input type="submit" class="btn btn-warning" value="Agregar Colonia"></div>
                 </form>
             </div>
         </div>
@@ -71,4 +85,14 @@
 </div>
 </div>
 
+@endsection
+
+@section('scripts')
+<script>
+    $(function(){
+        $('.delete').click(function(){
+            $('#colonia-' + $(this).data('colony')).trigger('submit');
+        })
+    })
+</script>
 @endsection

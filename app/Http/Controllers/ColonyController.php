@@ -87,6 +87,6 @@ class ColonyController extends Controller
     {
         $colony = Colony::find($id);
         $colony->delete();
-        return response();
+        return redirect()->back();
     }
 }

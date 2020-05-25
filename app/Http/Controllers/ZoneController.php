@@ -75,6 +75,23 @@ class ZoneController extends Controller
         //
     }
 
+    public function deactivate($id)
+    {
+        $zona = Zone::findOrFail($id);
+        $zona->active = 0;
+        $zona->save();
+        return redirect()->back();
+    }
+
+    public function activate($id)
+    {
+        $zona = Zone::findOrFail($id);
+        $zona->active = 1;
+        $zona->save();
+        return redirect()->back();
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *

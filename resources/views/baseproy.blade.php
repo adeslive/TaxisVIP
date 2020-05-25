@@ -52,16 +52,16 @@
                 </div>
             </div>
         </li>
-        
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('listaCarreras')}}">Ver carreras</a>
+        </li>
+
         @if (Auth::user()->access_level == 1)
           <li class="nav-item">
             <a class="nav-link" href="{{route('crearChofer')}}">Agregar Empleados</a>
           </li>
-        @else
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('listaCarreras')}}">Ver carreras</a>
-        </li>
-        @endif  
+        @endif
         
       </ul>
       <form action="{{ route('logout') }}" method="POST" class="form-inline my-2 my-lg-0">
@@ -81,15 +81,12 @@
   <div class="container-fluid">
     @yield('seccion')
   </div>
-  <!--<div class="container bg-dark text-white text-center">footer</div>-->
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="{{asset('js/popper.min.js')}}"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
+
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('js/paginacion.js')}}"></script>
   @yield('scripts')
 </body>
 
