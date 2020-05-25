@@ -73,6 +73,16 @@ Route::get('listaCarreras', function () {
     return view('listaCarreras');
 })->name('listaCarreras');
 
+//RUTAS DE CLIENTES (PRUEBA)
+
+Route::get('/clientes/clagregarCliente', function () {
+    return view('/clientes/agregarCliente');
+})->name('agregarCliente');
+
+Route::get('/clientes/listaClientes', function () {
+    return view('/clientes/listaClientes');
+})->name('listaClientes');
+
 /*********************************MOVIL ROUTES************************************/
 Route::get('/bienvenido','DriverMovilController@index')->name('choferesMovil');
 Route::get('/bienvenido/nuevaCarrera/{driver_id}','DriverMovilController@newCarreer')->name('nuevaCarrera');
