@@ -31,6 +31,13 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
+        DB::table('customers')->insert([
+            [
+                'id' => 0,
+                'users_id' => null,
+            ]
+        ]);
+
         factory(App\Vehicle::class, 10)->create();
     }
 }

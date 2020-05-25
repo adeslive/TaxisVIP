@@ -42,10 +42,10 @@
                                 <div class="form-group">
                                     <label for="cliente">Cliente</label>
                                     <select class="custom-select" required id="cliente">
-                                        <option selected>Seleccione cliente</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>on>
+                                        <option value="0" selected>Cliente sin registrar</option>
+                                        @foreach ($customers as $customer)
+                                            <option value="{{ $customer->id }}" selected>{{ $customer }} {{ $customer}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                   

@@ -19,9 +19,10 @@ class CreateDriversTable extends Migration
             $table->boolean('status')->default('0');
             $table->boolean('careerstatus')->nullable()->default('0');
             $table->decimal('mileage')->nullable()->default('0');
+            $table->string('photo')->nullable();
             $table->unsignedBigInteger('zones_id')->nullable();
             $table->foreign('zones_id')->references('id')->on('zones');
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('users_id')->nullable();
             $table->foreign('users_id')->references('id')->on('users');
             $table->timestamps();
         });

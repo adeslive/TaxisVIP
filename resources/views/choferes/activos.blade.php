@@ -40,8 +40,8 @@
           <h4>{{$chofer->mileage}}</h4>
         </div>
         </td>
-        <td class="align-middle"><a type="button" class="btn btn-outline-secondary " href="{{route('inactivar', $chofer->id)}}">Inactivar</a></td>
-        <td class="align-middle"><button type="button" class="btn btn-success align-middle">Carrera</button></td>
+        <td class="align-middle"><a type="button" class="btn btn-outline-secondary" href="{{route('inactivar', $chofer->id)}}">Inactivar</a></td>
+        <td class="align-middle"><a type="button" class="btn btn-success align-middle" href="{{ route('carrera', $chofer->id) }}">Carrera</a></td>
       </tr>
       @endforeach
     </tbody>

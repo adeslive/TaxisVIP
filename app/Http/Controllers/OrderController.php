@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use App\Order;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('carrera');
+        $customers = Customer::where('id', '<>', '1')->get();
+        return view('carrera', ['customers' => $customers]);
     }
 
     /**
