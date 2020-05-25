@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="{{asset('css/all.css')}}">
   <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/paginacion.css')}}">
+  @yield('head')
 
   <title>Taxis VIP</title>
 </head>
@@ -86,9 +87,10 @@
     </div>
   </nav>
 </header>
+<br><br>
 
 <body>
-  <div class="container-fluid mt-2">
+  <div class="container">
     @yield('info')
   </div>
 
@@ -102,7 +104,7 @@
   <script src="{{asset('js/popper.min.js')}}"></script>
 
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
-  @yield('scripts')
+  @yield('foot')
 </body>
 
 </html>
