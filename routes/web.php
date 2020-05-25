@@ -56,24 +56,33 @@ Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|s
     Route::get('/carrera/{chofer}', 'OrderController@create')->name('carrera');
 
     //ZONAS RUTAS DE PRUEBA
-Route::get('/zonas/agregarZona', 'ZoneController@create')->name('agregarZona');
-Route::get('/zonas/listaZonas', 'ZoneController@index')->name('listaZonas');
-Route::get('/zonas/{zona}', 'ZoneController@show')->name('zona');
-Route::post('/zonas', 'ZoneController@store')->name('crearZona');
-Route::put('/zonas/activar/{zona}', 'ZoneController@activate')->name('activarZona');
-Route::put('/zonas/desactivar/{zona}', 'ZoneController@deactivate')->name('desactivarZona');
-Route::delete('/zonas/{zona}', 'ZoneController@destroy')->name('borrarZona');
+    Route::get('/zonas/agregarZona', 'ZoneController@create')->name('agregarZona');
+    Route::get('/zonas/listaZonas', 'ZoneController@index')->name('listaZonas');
+    Route::get('/zonas/{zona}', 'ZoneController@show')->name('zona');
+    Route::post('/zonas', 'ZoneController@store')->name('crearZona');
+    Route::put('/zonas/activar/{zona}', 'ZoneController@activate')->name('activarZona');
+    Route::put('/zonas/desactivar/{zona}', 'ZoneController@deactivate')->name('desactivarZona');
+    Route::delete('/zonas/{zona}', 'ZoneController@destroy')->name('borrarZona');
 
-//COLONIAS
-Route::post('/colonias/{zone}', 'ColonyController@store')->name('crearColonia');
-Route::delete('/colonias/{colony}', 'ColonyController@destroy')->name('borrarColonia');
+    //COLONIAS
+    Route::post('/colonias/{zone}', 'ColonyController@store')->name('crearColonia');
+    Route::delete('/colonias/{colony}', 'ColonyController@destroy')->name('borrarColonia');
 
-//LISTA DE CARRERAS RUTA DE PRUEBA
+    //LISTA DE CARRERAS RUTA DE PRUEBA
 
-Route::get('listaCarreras', function () {
-    return view('listaCarreras');
-})->name('listaCarreras');
+    Route::get('listaCarreras', function () {
+        return view('listaCarreras');
+    })->name('listaCarreras');
 
+    //RUTAS DE CLIENTES (PRUEBA)
+
+    Route::get('/clientes/clagregarCliente', function () {
+        return view('/clientes/agregarCliente');
+    })->name('agregarCliente');
+
+    Route::get('/clientes/listaClientes', function () {
+        return view('/clientes/listaClientes');
+    })->name('listaClientes');
 });
 
 /*********************************MOVIL ROUTES************************************/

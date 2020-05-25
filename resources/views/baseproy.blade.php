@@ -57,9 +57,24 @@
           <a class="nav-link" href="{{route('listaCarreras')}}">Ver carreras</a>
         </li>
 
+        
+        <li class="nav-item">
+                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <button type="button" class="btn btn-primary">Clientes</button>
+                    <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+                        <a class="dropdown-item" href="{{route('listaClientes')}}">Lista Clientes</a>
+                        <a class="dropdown-item" href="{{route('agregarCliente')}}">Agregar Cliente</a>
+
+                      </div>
+                    </div>
+                  </div>
+                </li>
+        
         @if (Auth::user()->access_level == 1)
           <li class="nav-item">
-            <a class="nav-link" href="{{route('crearChofer')}}">Agregar Empleados</a>
+            <a class="nav-link" href="{{route('crearChofer')}}">Agregar Chofer</a>
           </li>
         @endif
         
