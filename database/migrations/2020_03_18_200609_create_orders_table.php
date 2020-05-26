@@ -23,8 +23,8 @@ class CreateOrdersTable extends Migration
             $table->decimal('distance');
             $table->string('origin', 45);
             $table->string('destination', 45);
-            $table->string('notes', 255);
-            $table->boolean('status')->default(1);
+            $table->string('notes', 255)->default('');
+            $table->boolean('status')->default(2);
             $table->timestamps();
         });
     }

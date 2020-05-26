@@ -102,7 +102,23 @@
 
   <div class="container-fluid">
     <section class="view">
+      @if($errors->any())
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{$errors->first()}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
 
+      @if(Session::has('notification'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ Session::get('notification') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
       <div class="container1">
         <div id="map" class="capa1"></div>
 
@@ -135,7 +151,7 @@
               <div class="form-group">
                 <label for="cliente">Cliente</label>
                 <select class="custom-select" required id="cliente" name="customers_id">
-                    <option value="0" selected>Cliente sin registrar</option>
+                    <option value="1" selected>Cliente sin registrar</option>
                     @foreach ($customers as $customer)
                         <option value="{{ $customer->id }}" selected>{{ $customer }} {{ $customer}}</option>
                     @endforeach

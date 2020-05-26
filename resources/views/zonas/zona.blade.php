@@ -87,7 +87,7 @@
 
 @endsection
 
-@section('scripts')
+@section('foot')
 <script>
     $(function(){
         $('.delete').click(function(){

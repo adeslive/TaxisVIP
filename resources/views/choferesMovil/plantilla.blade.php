@@ -91,8 +91,8 @@
                 </div>
 
                 <div class="col-12 col-sm-12 ">
-                    <h5><center><strong><div style="color: red;">{{$Person->name}} {{$Person->lastname}}</div></strong></center></h5>
-                    <h6><strong style="color: black;">No. de Identidad: </strong> <strong style="color: blue;">{{$Person->identity}}</strong></h6>
+                    <h5><center><strong><div style="color: red;">{{$Driver->person->name}} {{$Driver->person->lastname}}</div></strong></center></h5>
+                    <h6><strong style="color: black;">No. de Identidad: </strong> <strong style="color: blue;">{{$Driver->person->identity}}</strong></h6>
                     <h6><strong style="color: black;">No. de Licencia: </strong> <strong style="color: blue;">{{$Driver->license}}</strong></h6>
 
                 </div>

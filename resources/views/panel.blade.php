@@ -11,20 +11,20 @@
             <div class="card-body">
                 <div class="row my-2">
                     @foreach ($drivers as $driver)
-                    @if($driver->status == 1)
+                    @if($driver->status == 1 && $driver->careerstatus == 0)
                     <div class="col-sm-2 p-2 justify-content-center">
                         @if ($driver->photo == null)
                             <i class="fas fa-user fa-3x" style="margin:auto" data-toggle="popover" data-placement="bottom"
                             title="{{ $driver->person->name . ' ' . $driver->person->lastname }}"
                             data-trigger="click"
                             data-html="true"
-                            data-content="<a class='btn btn-warning' href='{{ route('inactivar', $driver->id) }}' type='button'> Desactivar </a> <a class='btn btn-success' href='{{ route('carrera', $driver->id) }}' type='button'> Carrera </a>"></i>
+                            data-content="<a class='btn btn-warning' href='{{ route('inactivar', $driver->id) }}' type='button'> Desactivar </a>"></i>
                         @else
                             <img width="45" src="{{ asset('storage') . '/' . $driver->photo }}" style="margin:auto" data-toggle="popover" data-placement="bottom"
                                 title="{{ $driver->person->name . ' ' . $driver->person->lastname }}"
                                 data-trigger="click"
                                 data-html="true"
-                                data-content="<a class='btn btn-warning' href='{{ route('inactivar', $driver->id) }}' type='button'> Desactivar </a> <a class='btn btn-success' href='{{ route('carrera', $driver->id) }}' type='button'> Carrera </a>">
+                                data-content="<a class='btn btn-warning' href='{{ route('inactivar', $driver->id) }}' type='button'> Desactivar </a>">
                         @endif
                     </div>
                     @endif
@@ -72,20 +72,20 @@
             <div class="card-body">
                 <div class="row">
                     @foreach ($drivers as $driver)
-                    @if($driver->status == 1 && $driver->career_status == 1)
+                    @if($driver->status == 1 && $driver->careerstatus == 1)
                     <div class="col-sm-2 p-2 justify-content-center">
                         @if ($driver->photo == null)
                             <i class="fas fa-user fa-3x" style="margin:auto" data-toggle="popover" data-placement="bottom"
                             title="{{ $driver->person->name . ' ' . $driver->person->lastname }}"
                             data-trigger="click"
                             data-html="true"
-                            data-content="<a class='btn btn-primary' href='{{ route('activar', $driver->id) }}' type='button'> Activar </a>"></i>
+                            data-content="<a class='btn btn-primary' href='{{ route('activar', $driver->id) }}' type='button'> Terminar Carrera </a>"></i>
                         @else
                             <img width="45" src="{{ asset('storage') . '/' . $driver->photo }}" style="margin:auto" data-toggle="popover" data-placement="bottom"
                                 title="{{ $driver->person->name . ' ' . $driver->person->lastname }}"
                                 data-trigger="click"
                                 data-html="true"
-                                data-content="<a class='btn btn-primary' href='{{ route('activar', $driver->id) }}' type='button'> Activar </a>">
+                                data-content="<a class='btn btn-primary' href='{{ route('activar', $driver->id) }}' type='button'> Terminar Carrera </a>">
                         @endif
                     </div>
                     @endif

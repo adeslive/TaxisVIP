@@ -30,7 +30,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <center>
-                                            <form action="{{route('verificarCarrera',$Person->id)}}" method="GET">
+                                            <form action="{{route('verificarCarrera',Auth::user()->id)}}" method="GET">
                                                 <button type="submit" class="btn btn-success" id="iniciarCarrera" >Iniciar Carrera</button>
                                             </form>
                                         </center>

@@ -48,6 +48,9 @@
                 @case(1)
                     En curso
                     @break
+                @case(2)
+                    Aceptada
+                    @break
                 @default
             @endswitch</td>
         </tr>
