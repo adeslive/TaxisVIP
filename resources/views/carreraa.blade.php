@@ -20,35 +20,80 @@
   <body>
 
     <header>
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="#">TaxiVIP</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-            
-                <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                    <a class="nav-link" href="#">Principal <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Choferes</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Agregar Empleados</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-secondary my-2 my-sm-2" type="submit">Cerrar sesion</button>
-                </form>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="{{ route('panel') }}">TaxiVIP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" class="btn btn-primary">Choferes</button>
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"></button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+                <a class="dropdown-item" href="{{route('choferes')}}">Lista choferes</a>
+                <a class="dropdown-item" href="{{route('activos')}}">Activos</a>
+                <a class="dropdown-item" href="{{route('inactivos')}}">Inactivos</a>
+                <a class="dropdown-item" href="{{route('encarrera')}}">En carrera</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <li class="nav-item">
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-primary">Zonas</button>
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+                            <a class="dropdown-item" href="{{route('listaZonas')}}">Lista Zonas</a>
+                            <a class="dropdown-item" href="{{route('agregarZona')}}">Agregar Zonas</a>
+                        </div>
                 </div>
-            </nav>
-            <br>
-            <br>
-            <br>
-        </div>
-    </header>
+            </div>
+        </li>
+
+        <li class="nav-item">
+                  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <button type="button" class="btn btn-primary">Clientes</button>
+                    <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+                        <a class="dropdown-item" href="{{route('listaClientes')}}">Lista Clientes</a>
+                        <a class="dropdown-item" href="{{route('agregarCliente')}}">Agregar Cliente</a>
+
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('listaCarreras')}}">Carreras</a>
+        </li>
+
+        
+        
+        
+        @if (Auth::user()->access_level == 1)
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('crearChofer')}}">Agregar Chofer</a>
+          </li>
+        @endif
+        
+      </ul>
+      <form action="{{ route('logout') }}" method="POST" class="form-inline my-2 my-lg-0">
+        @csrf
+        <button class="btn btn-secondary my-2 my-sm-2" type="submit">Cerrar sesion</button>
+      </form>
+    </div>
+  </nav>
+</header>
+<br><br>
 
 
             <div class="container-fluid">
