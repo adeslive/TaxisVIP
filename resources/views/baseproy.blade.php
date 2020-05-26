@@ -72,9 +72,10 @@
           <a class="nav-link" href="{{route('listaCarreras')}}">Carreras</a>
         </li>
 
-        
-        
-        
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('carrera')}}">Nueva Carrera</a>
+        </li>
+
         @if (Auth::user()->access_level == 1)
           <li class="nav-item">
             <a class="nav-link" href="{{route('crearChofer')}}">Agregar Chofer</a>

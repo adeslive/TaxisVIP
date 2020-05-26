@@ -8,7 +8,7 @@ class Order extends Model
 {
     protected $primaryKey = 'id';
     protected $table = 'orders';
-    protected $fillable = ['price', 'distance', 'origin','destination','status'];
+    protected $fillable = ['price', 'distance', 'origin', 'destination', 'customers_id', 'drivers_id'];
 
     public function driver(){
         return $this->hasOne('App\Driver', 'id', 'drivers_id');

@@ -42,17 +42,13 @@
             <td>{{ $order->price }}</td>
             <td>{{ $order->created_at }}</td>
             <td>@switch($order->status)
-                @case(1)
+                @case(0)
                     Completada
                     @break
-                @case(2)
-                    En el taxi
-                    @break
-                @case(2)
-                    Petición
+                @case(1)
+                    En curso
                     @break
                 @default
-                    
             @endswitch</td>
         </tr>
         @endforeach

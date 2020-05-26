@@ -53,7 +53,8 @@ Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|s
     Route::post('/choferes/multa/{chofer}', 'InfractionController@store')->name('crearMultaAccion');
 
     // Metodos para la carrera
-    Route::get('/carrera/{chofer}', 'OrderController@create')->name('carrera');
+    Route::get('/carrera', 'OrderController@create')->name('carrera');
+    Route::post('/carrera','OrderController@store')->name('orderCreate');
 
     //ZONAS RUTAS DE PRUEBA
     Route::get('/zonas/agregarZona', 'ZoneController@create')->name('agregarZona');
@@ -69,11 +70,9 @@ Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|s
     Route::delete('/colonias/{colony}', 'ColonyController@destroy')->name('borrarColonia');
 
     //LISTA DE CARRERAS RUTA DE PRUEBA
-
     Route::get('listaCarreras', 'OrderController@index')->name('listaCarreras');
-
+    
     //RUTAS DE CLIENTES (PRUEBA)
-
     Route::get('/clientes/clagregarCliente', function () {
         return view('/clientes/agregarCliente');
     })->name('agregarCliente');

@@ -20,4 +20,8 @@ class Driver extends Model
    public function cars() {
       return $this->hasMany('App\Vehicle', 'drivers_id');
    }
+
+   public function orders() {
+      return $this->hasMany('App\Order', 'drivers_id');
+   }
 }

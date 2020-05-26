@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Customer;
+use App\Zone;
 use App\Order;
+use App\Customer;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -27,7 +28,8 @@ class OrderController extends Controller
     public function create()
     {
         $customers = Customer::where('id', '<>', '1')->get();
-        return view('carrera', ['customers' => $customers]);
+        $zones = Zone::where('active', '=', '1')->get();
+        return view('carrera', ['customers' => $customers, 'zones' => $zones]);
     }
 
     /**
@@ -38,7 +40,32 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+
+        $origin = \App\Colony::find($data['origin']);
+        $destination = \App\Colony::find($data['destination']);
+        
+        if($data['notes'] == null) $data['notes'] = ' ';
+        $data['price'] = 15*($data['distance'] + 1);
+        $data['origin'] = $origin->zone->zones . ', ' . $origin->colony;
+        $data['destination'] = $destination->zone->zones . ', ' . $destination->colony;
+
+        $driver = \App\Driver::where('status', '=', 0)
+        ->where('zones_id', '=', $origin->zone->id)
+        ->where('careerstatus', '=', 0)
+        ->orderBy('mileage', 'ASC')
+        ->take(1)
+        ->get();
+
+        if(!isset($driver[0])) return redirect()->back()->withErrors(['No hay conductor disponible']);
+
+        $driver[0]->mileage += $data['distance'];
+        $driver[0]->careerstatus = 1;
+
+        $data['drivers_id'] = $driver[0]->id;
+        $order = new Order($data);
+
+        return dd($data);
     }
 
     /**
