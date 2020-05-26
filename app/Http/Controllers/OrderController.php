@@ -29,7 +29,7 @@ class OrderController extends Controller
     {
         $customers = Customer::where('id', '<>', '1')->get();
         $zones = Zone::where('active', '=', '1')->get();
-        return view('carrera', ['customers' => $customers, 'zones' => $zones]);
+        return view('carreraa', ['customers' => $customers, 'zones' => $zones]);
     }
 
     /**
@@ -45,10 +45,8 @@ class OrderController extends Controller
         $origin = \App\Colony::find($data['origin']);
         $destination = \App\Colony::find($data['destination']);
         
-        if($data['notes'] == null) $data['notes'] = ' ';
-        $data['price'] = 15*($data['distance'] + 1);
-        $data['origin'] = $origin->zone->zones . ', ' . $origin->colony;
-        $data['destination'] = $destination->zone->zones . ', ' . $destination->colony;
+        if($data['notes'] == null) $data['notes'] = '';
+        $data['price'] = 15*(round($data['distance'])+ 1);
 
         $driver = \App\Driver::where('status', '=', 0)
         ->where('zones_id', '=', $origin->zone->id)
