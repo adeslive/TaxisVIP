@@ -1,0 +1,32 @@
+
+.container1
+{
+background:#fff;
+border-radius:10px;
+height: 590px;
+margin: 0 auto;
+padding: 5px;
+width: 890px;
+}
+ 
+.capa1
+{
+margin-top: 10px;
+border: 1px solid #9aaaaa;
+border-radius:5px;
+display:inline-block;
+height: 560px;
+vertical-align:top;
+width: 520px;
+}
+.capa2
+{
+margin-top: 10px;
+border: 1px solid #9aaaaa;
+border-radius:5px;
+display:inline-block;
+height: 560px;
+vertical-align:top;
+width: 350px;
+}
+ 
