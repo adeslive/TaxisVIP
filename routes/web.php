@@ -81,8 +81,11 @@ Route::group(['prefix' => 'panel', 'middleware' => ['auth','access.level:admin|s
 });
 
 /*********************************MOVIL ROUTES************************************/
-Route::get('/bienvenido','DriverMovilController@index')->name('choferesMovil');
-Route::get('/bienvenido/nuevaCarrera/{driver_id}','DriverMovilController@newCarreer')->name('nuevaCarrera');
-Route::get('/bienvenido/finalizarCarrera/{order_id}','DriverMovilController@finishCarreer')->name('finalizarCarrera');
-Route::get('/bienvenido/verificarCarrera/{driver_id}','DriverMovilController@verifyCarreer')->name('verificarCarrera');
+Route::group(['prefix' => 'bienvenido', 'middleware' => ['auth','access.level:chofer']], function () {
+    Route::get('','DriverMovilController@index')->name('choferesMovil');
+    Route::get('/carrera/{driver_id}','DriverMovilController@newCarreer')->name('nuevaCarrera');
+    Route::get('/enVehiculo/{order_id}','DriverMovilController@inVehicle')->name('enVehiculo');
+    Route::get('/finalizarCarrera/{order_id}','DriverMovilController@finishCarreer')->name('finalizarCarrera');
+    Route::get('/verificarCarrera/{driver_id}','DriverMovilController@verifyCarreer')->name('verificarCarrera');
+});
 /*********************************************************************************/

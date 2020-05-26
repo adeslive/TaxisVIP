@@ -35,11 +35,19 @@
                                     </center></strong></td>
                                 </tr>
                                 <tr>
+                                    @if($Order->status == 2)
+                                    <td colspan="2"  ><center><strong style="padding-right: 15px; font-size: 16px;"> Cliente en Vehiculo:</strong>
+                                        <form action="{{route('enVehiculo',$Order->id)}}" method="GET">
+                                           <button type="submit" class="btn btn-outline-warning" id="finalizarCarrera" style="margin-top: 15px;">Marcar</button>
+                                       </form>
+                                   </center></td>
+                                    @else
                                     <td colspan="2"  ><center><strong style="padding-right: 15px; font-size: 16px;"> Finalizar la carrera:</strong>
-                                         <form action="{{route('finalizarCarrera',$Order->id)}}" method="GET">
-                                            <button type="submit" class="btn btn-outline-danger" id="finalizarCarrera" style="margin-top: 15px;">Terminar</button>
-                                        </form>
-                                    </center></td>
+                                        <form action="{{route('finalizarCarrera',$Order->id)}}" method="GET">
+                                           <button type="submit" class="btn btn-outline-danger" id="finalizarCarrera" style="margin-top: 15px;">Terminar</button>
+                                       </form>
+                                   </center></td>
+                                    @endif
                                 </tr>
                             </tbody>
                         </table>
